@@ -117,6 +117,7 @@ install_cdk(){
     if command -v cdk > /dev/null 2>&1; then
         echo -e "${GREEN}AWS CDK is already installed.${NC}"
     else
+        echo -e $"{YELLOW}AWS CDK is not installed. Proceeding with installation...${NC}"
         npm install -g aws-cdk > /dev/null 2>&1
         echo -e "${GREEN}AWS CDK installed successfully.${NC}"
     fi
