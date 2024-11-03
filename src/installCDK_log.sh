@@ -50,12 +50,12 @@ check_aws_cli_installed() {
         required_version="2.18.0"
 
         # Function to compare versions
-        version_ge() {
+        cli_version_get() {
             [ "$(printf '%s\n' "$2" "$1" | sort -V | head -n1)" = "$2" ]
         }
 
         # Check if installed version is 2.18.0 or higher
-        if version_ge "$installed_version" "$required_version"; then
+        if cli_version_get "$installed_version" "$required_version"; then
             log_message "INFO" "AWS CLI version $installed_version is already installed and meets the required version (2.18.0 or higher)." "$GREEN"
             return 0
         else
@@ -162,12 +162,12 @@ install_cdk(){
             required_version="3.12.7"
             
             # Function to compare versions
-            version_ge() {
+            python_version_get() {
                 [ "$(printf '%s\n' "$2" "$1" | sort -V | head -n1)" = "$2" ]
             }
 
             # Check if installed version is 3.12.7 or higher
-            if version_ge "$python_version" "$required_version"; then
+            if python_version_get "$python_version" "$required_version"; then
                 log_message "INFO" "Python version 3.12.7 or higher is already installed." "$GREEN"
             else
                 log_message "WARNING" "Python version 3.12 is installed but outdated. Proceeding with installation...${NC}" "$YELLOW"
