@@ -200,6 +200,7 @@ install_python() {
     # Download and extract Python
     sudo wget http://python.org/ftp/python/3.12.7/Python-3.12.7.tar.xz -O /usr/src/Python-3.12.7.tar.xz > /dev/null 2>&1
     sudo tar -xf /usr/src/Python-3.12.7.tar.xz -C /usr/src > /dev/null 2>&1
+    log_message "WARNING" "Configuring and running make command for Python. This could take about 30 minutes to complete..." "$YELLOW"
 
     # Store the current working directory
     current_directory=$(pwd)
@@ -208,7 +209,6 @@ install_python() {
     cd /usr/src/Python-3.12.7 || exit 1
 
     # Configure, make, and install Python
-    echo -e "${YELLOW}Configuring and running make command for Python. This could take about 30 minutes to complete...${NC}"
     sudo ./configure --enable-optimizations > /dev/null 2>&1
     sudo make -j "$(nproc)" > /dev/null 2>&1
     sudo make altinstall > /dev/null 2>&1
