@@ -184,8 +184,6 @@ install_cdk(){
 
 # Function to install Python 3.12.7
 install_python() {
-    log_message "INFO" "Starting Python 3.12.7 installation..." "$BLUE"
-
     # Remove old OpenSSL
     sudo yum remove -y openssl openssl-devel > /dev/null 2>&1
     
