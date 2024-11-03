@@ -117,7 +117,6 @@ install_node_js(){
     if command -v node > /dev/null 2>&1 && [ "$(node -v)" == "v20.18.0" ]; then
         log_message "INFO" "Node.js version 20 is already installed." "$GREEN"
     else
-        echo -e "\n"
         log_message "WARNING" "Node.js version 20 is not installed or outdated. Installing Node.js 20..." "$YELLOW"
         nvm install 20 > /dev/null 2>&1
         nvm use 20 > /dev/null 2>&1
