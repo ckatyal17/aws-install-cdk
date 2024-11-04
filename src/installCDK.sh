@@ -8,7 +8,7 @@ BLUE='\033[0;34m'
 NC='\033[0m'
 
 # Define log file path
-LOG_FILE="./install_script.log"
+LOG_FILE="./installCDK.log"
 
 # Logging function
 log_message() {
