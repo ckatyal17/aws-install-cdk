@@ -1,4 +1,4 @@
-# AWS CLI and AWS CDK Installation Script
+# AWS CDK Installation Script
 
 This Bash script automates the installation and setup of:
 - **AWS CLI** (specifically version 2.18.0 or higher)
