@@ -13,14 +13,14 @@ Additionally, the script checks for existing installations, removes outdated ver
 - Checks and installs Node.js version 20 via NVM.
 - Installs the AWS CDK toolkit and configures it for either **TypeScript** or **Python** development.
 - Uses color-coded logging messages for easier readability.
-- Writes log entries to `install_script.log` with timestamps and log levels.
+- Writes log entries to `installCDK.log` with timestamps and log levels.
 
 ## Usage
 
 ### Basic Command
 To run the script, execute:
 ```bash
-./install_script.sh
+./installCDK.sh
 ```
 
 ### Optional Parameters
@@ -28,8 +28,8 @@ The script accepts an optional `--language` argument to specify the development 
 
 #### Examples
 ```bash
-./install_script.sh --language typescript  # Sets up CDK for TypeScript (default)
-./install_script.sh --language python      # Sets up CDK for Python
+./installCDK.sh --language typescript  # Sets up CDK for TypeScript (default)
+./installCDK.sh --language python      # Sets up CDK for Python
 ```
 
 ### Notes
@@ -44,7 +44,7 @@ Ensure you have the following:
 ## Script Breakdown
 
 ### 1. Logging
-The script defines a `log_message` function to log both to the console (with color-coded messages) and to a log file (`install_script.log`). The log messages include timestamps and are categorized by log level (INFO, WARNING, ERROR).
+The script defines a `log_message` function to log both to the console (with color-coded messages) and to a log file (`installCDK.log`). The log messages include timestamps and are categorized by log level (INFO, WARNING, ERROR).
 
 ### 2. AWS CLI Check and Installation
 - **`check_aws_cli_installed`**: Checks if AWS CLI v2.18.0 or higher is installed.
@@ -68,13 +68,13 @@ The script first checks if AWS CLI is installed and then proceeds to:
 
 To monitor the script's progress in real time:
 ```bash
-tail -f install_script.log
+tail -f installCDK.log
 ```
 
 ## Troubleshooting
 
 If you encounter any issues:
-- Check the `install_script.log` file for detailed error messages and debugging information.
+- Check the `installCDK.log` file for detailed error messages and debugging information.
 - Verify internet connectivity and permissions if installations fail.
 
 ## License
