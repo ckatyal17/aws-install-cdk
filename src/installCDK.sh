@@ -10,7 +10,7 @@ NC='\033[0m'
 # Define log file path
 LOG_FILE="./installCDK.log"
 
-# Logging function
+# Logging functions
 log_message() {
     local level="$1"
     local message="$2"
@@ -18,6 +18,14 @@ log_message() {
 
     # Log to terminal with color
     echo -e "${color}${message}${NC}"
+
+    # Log to file with timestamp and log level
+    echo "$(date +'%Y-%m-%d %H:%M:%S') [$level] $message" >> "$LOG_FILE"
+}
+
+log_error() {
+    local level="$1"
+    local message="$2"
 
     # Log to file with timestamp and log level
     echo "$(date +'%Y-%m-%d %H:%M:%S') [$level] $message" >> "$LOG_FILE"
@@ -85,6 +93,28 @@ install_aws_cli_v2() {
     echo -e "\n${BLUE}===========================================${NC}"
     log_message "INFO" "Installing latest version of AWS CLI..." "$BLUE"
     echo -e "${BLUE}===========================================${NC}"
+
+    cli_response="$(curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" 2>&1)"
+
+    if [ $? -ne 0 ]; then
+        log_message "ERROR" "Unable to download aws cli. Please ensure that Machine is connected to internet..." "$RED"
+        log_error "ERROR" "$cli_response"
+    else
+        echo "AWS Cli package downloaded successfully."
+        unzip awscliv2.zip > /dev/null 2>&1
+        sudo ./aws/install > /dev/null 2>&1
+        rm -rf aws awscliv2.zip
+        installed_version=$(aws --version 2>&1 | cut -d " " -f1 | cut -d "/" -f2)
+        log_message "INFO" "AWS CLI v2 version $installed_version installed successfully." "$GREEN"
+    fi
+}
+
+: '
+# Install the latest AWS CLI v2
+install_aws_cli_v2() {
+    echo -e "\n${BLUE}===========================================${NC}"
+    log_message "INFO" "Installing latest version of AWS CLI..." "$BLUE"
+    echo -e "${BLUE}===========================================${NC}"
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" > /dev/null 2>&1
     unzip awscliv2.zip > /dev/null 2>&1
     sudo ./aws/install > /dev/null 2>&1
@@ -92,6 +122,7 @@ install_aws_cli_v2() {
     installed_version=$(aws --version 2>&1 | cut -d " " -f1 | cut -d "/" -f2)
     log_message "INFO" "AWS CLI v2 version $installed_version installed successfully." "$GREEN"
 }
+'
 
 # Install the NodeJS and NVM
 install_node_js(){
