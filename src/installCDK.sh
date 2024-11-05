@@ -94,21 +94,40 @@ install_aws_cli_v2() {
     log_message "INFO" "Installing latest version of AWS CLI..." "$BLUE"
     echo -e "${BLUE}===========================================${NC}"
 
+    # Download AWS CLI
     cli_response="$(curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" 2>&1)"
-
     if [ $? -ne 0 ]; then
-        log_message "ERROR" "Unable to download aws cli. Please ensure that Machine is connected to internet..." "$RED"
+        log_message "ERROR" "Unable to download AWS CLI. Please ensure that the machine is connected to the internet." "$RED"
         log_error "ERROR" "$cli_response"
+        return 1
     else
-        echo "AWS Cli package downloaded successfully."
-        unzip awscliv2.zip > /dev/null 2>&1
-        sudo ./aws/install > /dev/null 2>&1
+        log_message "INFO" "AWS CLI package downloaded successfully."
+    fi
+
+    # Unzip the AWS CLI package
+    unzip_response="$(unzip awscliv2.zip 2>&1)"
+    if [ $? -ne 0 ]; then
+        log_message "ERROR" "Failed to unzip AWS CLI package." "$RED"
+        log_error "ERROR" "$unzip_response"
+        rm -rf aws awscliv2.zip
+        return 1
+    else
+        log_message "INFO" "AWS CLI package unzipped successfully."
+    fi
+
+    # Install AWS CLI
+    install_response="$(sudo ./aws/install 2>&1)"
+    if [ $? -ne 0 ]; then
+        log_message "ERROR" "Failed to install AWS CLI." "$RED"
+        log_error "ERROR" "$install_response"
+        rm -rf aws awscliv2.zip
+        return 1
+    else
         rm -rf aws awscliv2.zip
         installed_version=$(aws --version 2>&1 | cut -d " " -f1 | cut -d "/" -f2)
-        log_message "INFO" "AWS CLI v2 version $installed_version installed successfully." "$GREEN"
+        log_message "INFO" "AWS CLI version $installed_version installed successfully." "$GREEN"
     fi
 }
-
 : '
 # Install the latest AWS CLI v2
 install_aws_cli_v2() {
