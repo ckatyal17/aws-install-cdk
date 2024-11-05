@@ -12,9 +12,11 @@ remove_aws_cli() {
     echo "======================================"
     if command -v aws; then
         # sudo yum remove awscli -y
+        sudo yum remove awscli -y > /dev/null 2>&1
         sudo rm /usr/local/bin/aws
         sudo rm /usr/local/bin/aws_completer
         sudo rm -rf /usr/local/aws-cli
+        sudo rm -rf ./aws
         echo "AWS CLI removed."
     else
         echo "AWS CLI is not installed."
