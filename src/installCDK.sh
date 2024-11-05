@@ -82,9 +82,11 @@ remove_aws_cli() {
     echo -e "\n${BLUE}======================================${NC}"
     log_message "INFO" "Removing current AWS CLI version..." "$BLUE"
     echo -e "${BLUE}======================================${NC}"
+    sudo yum remove awscli -y > /dev/null 2>&1
     sudo rm /usr/local/bin/aws > /dev/null 2>&1
     sudo rm /usr/local/bin/aws_completer > /dev/null 2>&1
     sudo rm -rf /usr/local/aws-cli > /dev/null 2>&1
+    sudo rm -rf ./aws > /dev/null 2>&1
     log_message "INFO" "AWS CLI removed." "$GREEN"
 }
 
