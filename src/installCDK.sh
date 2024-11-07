@@ -130,20 +130,6 @@ install_aws_cli_v2() {
         log_message "INFO" "AWS CLI version $installed_version installed successfully." "$GREEN"
     fi
 }
-: '
-# Install the latest AWS CLI v2
-install_aws_cli_v2() {
-    echo -e "\n${BLUE}===========================================${NC}"
-    log_message "INFO" "Installing latest version of AWS CLI..." "$BLUE"
-    echo -e "${BLUE}===========================================${NC}"
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" > /dev/null 2>&1
-    unzip awscliv2.zip > /dev/null 2>&1
-    sudo ./aws/install > /dev/null 2>&1
-    rm -rf aws awscliv2.zip
-    installed_version=$(aws --version 2>&1 | cut -d " " -f1 | cut -d "/" -f2)
-    log_message "INFO" "AWS CLI v2 version $installed_version installed successfully." "$GREEN"
-}
-'
 
 # Install the NodeJS and NVM
 install_node_js(){
