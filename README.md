@@ -44,7 +44,7 @@ Ensure you have the following:
 ## Script Breakdown
 
 ### 1. Logging
-The script defines a `log_message` function to log both to the console (with color-coded messages) and to a log file (`installCDK.log`). The log messages include timestamps and are categorized by log level (INFO, WARNING, ERROR).
+The script defines a `log_message` and `log_error` function to log both to the console (with color-coded messages) and to a log file (`installCDK.log`). The log messages include timestamps and are categorized by log level (INFO, WARNING, ERROR).
 
 ### 2. AWS CLI Check and Installation
 - **`check_aws_cli_installed`**: Checks if AWS CLI v2.18.0 or higher is installed.
