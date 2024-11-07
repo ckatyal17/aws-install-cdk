@@ -76,7 +76,3 @@ tail -f installCDK.log
 If you encounter any issues:
 - Check the `installCDK.log` file for detailed error messages and debugging information.
 - Verify internet connectivity and permissions if installations fail.
-
-## License
-
-This script is open-source and can be freely modified and distributed.
