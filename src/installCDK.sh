@@ -97,10 +97,10 @@ install_aws_cli_v2() {
     echo -e "${BLUE}===========================================${NC}"
 
     # Download AWS CLI
-    cli_response="$(curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" 2>&1)"
+    download_response="$(curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" 2>&1)"
     if [ $? -ne 0 ]; then
         log_message "ERROR" "Unable to download AWS CLI. Please ensure that the machine is connected to the internet." "$RED"
-        log_error "ERROR" "$cli_response"
+        log_error "ERROR" "$download_response"
         return 1
     else
         log_message "INFO" "AWS CLI package downloaded successfully."
