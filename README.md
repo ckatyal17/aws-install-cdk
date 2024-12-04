@@ -17,11 +17,19 @@ Additionally, the script checks for existing installations, removes outdated ver
 
 ## Usage
 
+
+- Download or copy the contents of [/src/installCDK.sh](https://github.com/ckatyal17/aws-install-cdk/blob/main/src/installCDK.sh) file on the machine where you want to install AWS CDK.
+- After downloading the script, make it executable using below command:
+```bash
+chmod +x installCDK.sh
+```
+
 ### Basic Command
 To run the script, execute:
 ```bash
 ./installCDK.sh
 ```
+
 
 ### Optional Parameters
 The script accepts an optional `--language` argument to specify the development language for AWS CDK. The default language is **TypeScript**.
@@ -33,10 +41,7 @@ The script accepts an optional `--language` argument to specify the development 
 ```
 
 ### Notes
-- After downloading the script, make it executable using below command:
-```bash
-chmod +x installCDK.sh
-```
+
 - If the `--language` parameter is not specified, TypeScript will be used by default.
 - Supported values for the `--language` argument are **typescript** and **python** only.
 
