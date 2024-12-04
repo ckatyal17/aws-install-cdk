@@ -19,7 +19,7 @@ Additionally, the script checks for existing installations, removes outdated ver
 
 
 - Download or copy the contents of [/src/installCDK.sh](https://github.com/ckatyal17/aws-install-cdk/blob/main/src/installCDK.sh) file on the machine where you want to install AWS CDK.
-- After downloading the script, make it executable using below command:
+- After downloading the script, make it executable by running below command:
 ```bash
 chmod +x installCDK.sh
 ```
