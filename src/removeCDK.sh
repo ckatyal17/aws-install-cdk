@@ -74,7 +74,7 @@ remove_python() {
     fi
 }
 
-# Main script execution
+# Main logic
 remove_aws_cli
 remove_aws_cdk
 remove_node_js_nvm
