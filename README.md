@@ -33,6 +33,10 @@ The script accepts an optional `--language` argument to specify the development 
 ```
 
 ### Notes
+- After downloading the script, make it executable using below command:
+```bash
+chmod +x installCDK.sh
+```
 - If the `--language` parameter is not specified, TypeScript will be used by default.
 - Supported values for the `--language` argument are **typescript** and **python** only.
 
